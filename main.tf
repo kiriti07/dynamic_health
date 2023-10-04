@@ -13,12 +13,3 @@ module "vpc" {
   private_subnet_1_az    = var.private_subnet_1_az
   private_subnet_2_az    = var.private_subnet_2_az
 }
-
-data "aws_ami" "amazon_linux" {
-  most_recent = true
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
-  owners = ["amazon"]
-}

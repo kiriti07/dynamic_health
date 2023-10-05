@@ -1,3 +1,10 @@
+provider "aws" {
+  region  = "us-east-1"
+  access_key = "AKIAY6474BAUGNS5UKEP"
+  secret_key = "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"
+}
+
+
 module "ec2" {
   source       = "./modules/ec2"
   instance_type = var.instance_type

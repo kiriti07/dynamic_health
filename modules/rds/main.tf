@@ -5,8 +5,8 @@ resource "aws_db_instance" "example" {
   engine_version       = var.engine_version
   instance_class       = var.instance_class
   db_name              = var.db_name
-  username             = data.aws_secretsmanager_secret_version.db_credentials.secret_string["username"]
-  password             = data.aws_secretsmanager_secret_version.db_credentials.secret_string["password"]
+  username             = jsondecode(data.aws_secretsmanager_secret_version.db_credentials.secret_string)["username"]
+  password             = jsondecode(data.aws_secretsmanager_secret_version.db_credentials.secret_string)["password"]
   parameter_group_name = var.parameter_group_name
   skip_final_snapshot  = var.skip_final_snapshot
 }

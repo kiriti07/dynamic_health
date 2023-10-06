@@ -38,7 +38,7 @@ variable "skip_final_snapshot" {
   type        = bool
 }
 
-variable "subnet_id" {
-  description = ""
-  type        = string
+variable "subnet_ids" {
+  description = "List of subnet IDs for the RDS DB"
+  type        = list(string)
 }

@@ -18,6 +18,11 @@ variable "subnet_id" {
   type        = string
 }
 
+variable "subnet_id1" {
+  description = ""
+  type        = string
+}
+
 variable "secret_id" {
   description = "Secret Manager Secret ID for RDS credentials"
   type        = string

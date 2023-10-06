@@ -23,4 +23,5 @@ module "rds" {
   db_name              = var.db_name
   parameter_group_name = var.parameter_group_name
   skip_final_snapshot  = var.skip_final_snapshot
+  subnet_id            = var.subnet_id
 }

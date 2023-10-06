@@ -1,3 +1,13 @@
+resource "aws_db_subnet_group" "example" {
+  name       = "main"
+  subnet_ids = [var.subnet_id]
+
+  tags = {
+    Name = "My DB subnet group"
+  }
+}
+
+
 resource "aws_db_instance" "example" {
   allocated_storage    = var.allocated_storage
   engine               = var.engine
@@ -8,6 +18,7 @@ resource "aws_db_instance" "example" {
   password             = jsondecode(data.aws_secretsmanager_secret_version.db_credentials.secret_string)["password"]
   parameter_group_name = var.parameter_group_name
   skip_final_snapshot  = var.skip_final_snapshot
+  db_subnet_group_name = aws_db_subnet_group.example.name
 }
 
 data "aws_secretsmanager_secret_version" "db_credentials" {

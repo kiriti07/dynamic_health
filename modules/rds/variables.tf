@@ -37,3 +37,8 @@ variable "skip_final_snapshot" {
   description = ""
   type        = bool
 }
+
+variable "subnet_id" {
+  description = ""
+  type        = string
+}

@@ -1,5 +1,5 @@
 resource "aws_db_subnet_group" "example" {
-  name       = "main"
+  name       = "subnet-main"
   subnet_ids = var.subnet_ids
 
   tags = {

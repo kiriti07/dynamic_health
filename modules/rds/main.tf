@@ -1,6 +1,5 @@
 resource "aws_db_instance" "example" {
   allocated_storage    = var.allocated_storage
-  storage_type         = var.allocated_storage
   engine               = var.engine
   engine_version       = var.engine_version
   instance_class       = var.instance_class

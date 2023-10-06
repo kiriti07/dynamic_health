@@ -28,11 +28,6 @@ variable "allocated_storage" {
   type        = number
 }
 
-variable "storage_type" {
-  description = ""
-  type        = string
-}
-
 variable "engine" {
   description = ""
   type        = string

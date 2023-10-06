@@ -1,7 +1,8 @@
 instance_type = "t2.micro"
 ami           = "ami-067d1e60475437da2"
 vpc_id        = "vpc-0e5eeec06a1ce77de"
-subnet_id     = "subnet-09569568ff0c365d3"
+subnet_id     = "subnet-01b420acdf5f7593d"
+subnet_id1    = "subnet-09569568ff0c365d3"
 secret_id     = "arn:aws:secretsmanager:us-east-1:616126220328:secret:mysql-rds-4s3bLs"
 allocated_storage    = 10
 engine               = "mysql"

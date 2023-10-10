@@ -29,3 +29,6 @@ jobs:
     - name: Terraform Apply
       #if: github.ref == 'refs/heads/develop' && github.event_name == 'push'  # This ensures apply only runs on push to the develop branch
       run: terraform apply -var-file="env/dev.tfvars" -auto-approve
+
+    # - name: Terraform Destroy
+    #   run: terraform destroy -var-file="env/dev.tfvars" -auto-approve

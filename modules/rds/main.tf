@@ -1,26 +1,23 @@
 resource "aws_db_subnet_group" "example" {
-  name       = "main"
-  subnet_ids = [var.subnet_id]
+  name       = "main-subnet"                     # Name of the DB subnet group.
+  subnet_ids = var.subnet_ids             # List of subnet IDs to associate with the DB subnet group.
 
   tags = {
-    Name = "My DB subnet group"
+    Name = "My DB subnet group"           # Tag to assign to the DB subnet group.
   }
 }
 
-
-resource "aws_db_instance" "example" {
-  allocated_storage    = var.allocated_storage
-  engine               = var.engine
-  engine_version       = var.engine_version
-  instance_class       = var.instance_class
-  db_name              = var.db_name
-  username             = jsondecode(data.aws_secretsmanager_secret_version.db_credentials.secret_string)["username"]
-  password             = jsondecode(data.aws_secretsmanager_secret_version.db_credentials.secret_string)["password"]
-  parameter_group_name = var.parameter_group_name
-  skip_final_snapshot  = var.skip_final_snapshot
-  db_subnet_group_name = aws_db_subnet_group.example.name
+data "aws_db_instance" "example" {
+  db_instance_identifier = "database-1"  # ID of the existing RDS instance to fetch data from.
 }
 
+
+# Outputs to display fetched values for the specified RDS instance.
+output "example_db_name" {
+  value = data.aws_db_instance.example.db_name
+}
+
+# Data source to fetch the current version of the specified secret from AWS Secrets Manager.
 data "aws_secretsmanager_secret_version" "db_credentials" {
   secret_id = var.secret_id
 }

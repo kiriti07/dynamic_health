@@ -5,23 +5,17 @@ provider "aws" {
 }
 
 
+# EC2 module configuration.
 module "ec2" {
-  source       = "./modules/ec2"
-  instance_type = var.instance_type
-  ami           = var.ami
-  vpc_id = var.vpc_id
-  subnet_id     = var.subnet_id
+  source       = "./modules/ec2"           # Path to the EC2 module source.
+  instance_type = var.instance_type         # EC2 instance type passed to the module.
+  ami           = var.ami                   # AMI ID passed to the module.
+  subnet_id     = data.aws_subnet.example.id
 }
 
+# RDS database module configuration
 module "rds" {
-  source    = "./modules/rds"
-  secret_id = var.secret_id
-  allocated_storage    = var.allocated_storage
-  engine               = var.engine
-  engine_version       = var.engine_version
-  instance_class       = var.instance_class
-  db_name              = var.db_name
-  parameter_group_name = var.parameter_group_name
-  skip_final_snapshot  = var.skip_final_snapshot
-  subnet_id            = var.subnet_id
+  source              = "./modules/rds"  
+  secret_id           = var.secret_id  
+  subnet_ids          = [var.subnet_id, var.subnet_id1]  
 }

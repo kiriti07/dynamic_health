@@ -1,3 +1,4 @@
+# Creating AWS DB Subnet Group
 resource "aws_db_subnet_group" "example" {
   name       = "main-subnet"                     # Name of the DB subnet group.
   subnet_ids = var.subnet_ids             # List of subnet IDs to associate with the DB subnet group.
@@ -7,6 +8,7 @@ resource "aws_db_subnet_group" "example" {
   }
 }
 
+# This data source fetches details of an existing RDS (Relational Database Service) instance in AWS.
 data "aws_db_instance" "example" {
   db_instance_identifier = "database-1"  # ID of the existing RDS instance to fetch data from.
 }
